@@ -23,6 +23,16 @@ inception_3a_pool = Conv2D(32, (1, 1), data_format='channels_first', name='incep
 inception_3a_pool = BatchNormalization(axis=1, epsilon=0.00001, name='inception_3a_pool_batchnorm')(inception_3a_pool)
 inception_3a_pool = Activation('relu')(inception_3a_pool)
 
+inception_3a_5x5 = Conv2D(16, (1, 1), data_format='channels_first', name='inception_3a_5x5_conv1')(mid_output)
+inception_3a_5x5 = BatchNormalization(axis=1, epsilon=0.00001, name='inception_3a_5x5_bn1')(inception_3a_5x5)
+inception_3a_5x5 = Activation('relu')(inception_3a_5x5)
+inception_3a_5x5 = Conv2D(32, (5, 5), data_format='channels_first', name='inception_3a_5x5_conv2')(inception_3a_5x5)
+inception_3a_5x5 = ZeroPadding2D(padding=(2, 2), data_format='channels_first')(inception_3a_5x5)
+inception_3a_5x5 = BatchNormalization(axis=1, epsilon=0.00001, name='inception_3a_5x5_bn2')(inception_3a_5x5)
+inception_3a_5x5 = Activation('relu')(inception_3a_5x5)
+
+
+
 w1 = '/Users/victor_sy_wang/Developer/ML/openface/models/openface/weights/l1_w.csv'
 b1 = '/Users/victor_sy_wang/Developer/ML/openface/models/openface/weights/l1_b.csv'
 w2 = '/Users/victor_sy_wang/Developer/ML/openface/models/openface/weights/l2_w.csv'
@@ -55,3 +65,5 @@ inception_3a_pool_batchnorm_w_path = '/Users/victor_sy_wang/Developer/ML/openfac
 inception_3a_pool_batchnorm_b_path = '/Users/victor_sy_wang/Developer/ML/openface/models/openface/weights/inception_3a_pool_batchnorm_b.csv'
 inception_3a_pool_batchnorm_m_path = '/Users/victor_sy_wang/Developer/ML/openface/models/openface/weights/inception_3a_pool_batchnorm_m.csv'
 inception_3a_pool_batchnorm_v_path = '/Users/victor_sy_wang/Developer/ML/openface/models/openface/weights/inception_3a_pool_batchnorm_v.csv'
+
+
