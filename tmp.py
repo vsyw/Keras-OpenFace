@@ -26,11 +26,18 @@ inception_3a_pool = Activation('relu')(inception_3a_pool)
 inception_3a_5x5 = Conv2D(16, (1, 1), data_format='channels_first', name='inception_3a_5x5_conv1')(mid_output)
 inception_3a_5x5 = BatchNormalization(axis=1, epsilon=0.00001, name='inception_3a_5x5_bn1')(inception_3a_5x5)
 inception_3a_5x5 = Activation('relu')(inception_3a_5x5)
-inception_3a_5x5 = Conv2D(32, (5, 5), data_format='channels_first', name='inception_3a_5x5_conv2')(inception_3a_5x5)
 inception_3a_5x5 = ZeroPadding2D(padding=(2, 2), data_format='channels_first')(inception_3a_5x5)
+inception_3a_5x5 = Conv2D(32, (5, 5), data_format='channels_first', name='inception_3a_5x5_conv2')(inception_3a_5x5)
 inception_3a_5x5 = BatchNormalization(axis=1, epsilon=0.00001, name='inception_3a_5x5_bn2')(inception_3a_5x5)
 inception_3a_5x5 = Activation('relu')(inception_3a_5x5)
 
+inception_3a_3x3 = Conv2D(96, (1, 1), data_format='channels_first', name='inception_3a_3x3_conv1')(mid_output)
+inception_3a_3x3 = BatchNormalization(axis=1, epsilon=0.00001, name='inception_3a_3x3_bn1')(inception_3a_3x3)
+inception_3a_3x3 = Activation('relu')(inception_3a_3x3)
+inception_3a_3x3 = ZeroPadding2D(padding=(1, 1), data_format='channels_first')(inception_3a_3x3)
+inception_3a_3x3 = Conv2D(128, (3, 3), data_format='channels_first', name='inception_3a_3x3_conv2')(inception_3a_3x3)
+inception_3a_3x3 = BatchNormalization(axis=1, epsilon=0.00001, name='inception_3a_3x3_bn2')(inception_3a_3x3)
+inception_3a_3x3 = Activation('relu')(inception_3a_3x3)
 
 
 w1 = '/Users/victor_sy_wang/Developer/ML/openface/models/openface/weights/l1_w.csv'
