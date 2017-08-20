@@ -42,3 +42,29 @@ function exportWeight (name, module, layer)
     v_csv:close()
   end
 end
+
+
+require 'torch'
+require 'nn'
+require 'dpnn'
+require 'image'
+require 'paths'
+
+torch.setdefaulttensortype('torch.FloatTensor')
+
+
+path='/Users/victor_sy_wang/Developer/ML/openface/data/lfw/dlib-affine-sz/Aaron_Eckhart/Aaron_Eckhart_0001.png'
+
+net = torch.load('nn4.small2.v1.t7')
+net:evaluate()
+
+img = torch.Tensor(1, 3, 96, 96)
+img_orig = image.load(path, 3)
+img[1] = image.scale(img_orig, 96, 96)
+-- print(img)
+emb = net:forward(img)
+print(emb)
+
+
+md = net.modules[16].modules[1].modules[1].modules[4]
+exportWeight('inception_3c_3x3_conv3', md, 'SpatialConvolution')
