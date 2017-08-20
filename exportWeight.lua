@@ -22,6 +22,7 @@ function exportWeight (name, module, layer)
     local b_csv = csvigo.File(paths.concat('./weights', name .. "_b.csv"), 'w')
     b_csv:write(b:totable())
     b_csv:close()
+    print(shape)
   end
   if layer == 'SpatialBatchNormalization' then
     local w = module.weight
