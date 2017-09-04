@@ -1,6 +1,6 @@
 # Keras-OpenFace
 
-Keras-OpenFace is a project converting [OpenFace](https://github.com/cmusatyalab/openface) from Torch implementation to a Keras version 
+Keras-OpenFace is a project converting [OpenFace](https://github.com/cmusatyalab/openface) from it's original Torch implementation to a Keras version 
 
 ### If you are only interested in using pre-trained model
 Load the Keras OpenFace model without local response normalization layer (Accuracy: 0.938+-0.013)
