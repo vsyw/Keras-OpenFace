@@ -44,16 +44,16 @@ def conv2d_bn(
   padding=None,
 ):
   num = '' if cv2_out == None else '1'
-  tensor = Conv2D(cv1_out, cv1_filter, strides=cv1_strides, data_format='channels_first', name=layer+'_conv'+num)(x)
-  tensor = BatchNormalization(axis=1, epsilon=0.00001, name=layer+'_bn'+num)(tensor)
+  tensor = Conv2D(cv1_out, cv1_filter, strides=cv1_strides, name=layer+'_conv'+num)(x)
+  tensor = BatchNormalization(axis=3, epsilon=0.00001, name=layer+'_bn'+num)(tensor)
   tensor = Activation('relu')(tensor)
   if padding == None:
     return tensor
-  tensor = ZeroPadding2D(padding=padding, data_format='channels_first')(tensor)
+  tensor = ZeroPadding2D(padding=padding)(tensor)
   if cv2_out == None:
     return tensor
-  tensor = Conv2D(cv2_out, cv2_filter, strides=cv2_strides, data_format='channels_first', name=layer+'_conv'+'2')(tensor)
-  tensor = BatchNormalization(axis=1, epsilon=0.00001, name=layer+'_bn'+'2')(tensor)
+  tensor = Conv2D(cv2_out, cv2_filter, strides=cv2_strides, name=layer+'_conv'+'2')(tensor)
+  tensor = BatchNormalization(axis=3, epsilon=0.00001, name=layer+'_bn'+'2')(tensor)
   tensor = Activation('relu')(tensor)
   return tensor
 
