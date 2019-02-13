@@ -30,6 +30,7 @@ def concatenate(tensors, axis=-1):
   return tf.concat(axis, tensors)
 
 def LRN2D(x):
+  import tensorflow as tf
   return tf.nn.lrn(x, alpha=1e-4, beta=0.75)
 
 def conv2d_bn(
