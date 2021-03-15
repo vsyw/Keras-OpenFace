@@ -18,3 +18,6 @@ $ jupyter notebook
 
 ### CoreML-OpenFace
 Pre-trained CoreML version of OpenFace in model/openface.coreml which you can easily integrate OpenFace into your iOS application.
+
+### License
+Unless otherwise stated, the source code, notebook files, and trained Tensorflow and Keras model files are licensed under the Apache 2.0 License.
